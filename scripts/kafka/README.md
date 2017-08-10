@@ -24,3 +24,5 @@
 - A Segment represents a separate set of `.index`, `.log`, and `.timeindex` files within a partition. These files are zero-left-filled indexed files.
 - Specifying how much data or how long data should be retained for a Topic, Kafka will purge messages in-order, regardless of whether the message has been consumed.
 - Deletion of segment log/index files are async. When Kafka decides to clean the logs, it only adds a suffix ".deleted" to the files so other Kafka threads no longer access it. The actual file deletion will be executed later, with period controlled by `file.delete.delay.ms` or `log.segment.delete.delay.ms`
+- A topic resides within a Broker (server process) and has multiple partitions. Partitions can exist on different Brokers/machines. But a single partition has to be stored entirely on a single machine/Broker.
+- The data stored on disk is the same as what the Broker receives from the Producer over the network and sends to its Consumers.
