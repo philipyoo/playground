@@ -21,3 +21,4 @@
 ### Random Notes
 - A Partition represents a directory within the kafka-logs directory (or targetted endpoint, configured with `log.dirs` or `log.dir`
 - A Segment represents a separate set of `.index`, `.log`, and `.timeindex` files within a partition. These files are zero-left-filled indexed files.
+- Specifying how much data or how long data should be retained for a Topic, Kafka will purge messages in-order, regardless of whether the message has been consumed.
