@@ -31,7 +31,7 @@ function prompt {
   local WHITE="\[\033[0;37m\]"
   local WHITEBOLD="\[\033[1;37m\]"
   local RESETCOLOR="\[\e[00m\]"
-  local ACE=git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+
   export PS1="$RED\u$GREEN → \W$YELLOWBOLD\$(get_git_branch) $RESETCOLOR"
 }
 
