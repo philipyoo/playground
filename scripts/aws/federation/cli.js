@@ -6,7 +6,7 @@ var AWS = require('aws-sdk');
     Because in Federation, docker containers restrict access, this file is
     a script file for ease-of-use.
 
-    KEY CMDS: 'list', 'check', 'rep'
+    KEY CMDS: 'list', 'check', 'rep', 'obj', 'listobj'
     // Can run one or many of these cmds at once
     Ex: $ node cli.js list check rep
 */
@@ -77,11 +77,37 @@ if (cmds.indexOf('obj') !== -1) {
         Bucket: bucketName,
         Key: `hello${Date.now()}`
     };
-    s3.putObject(params, function(err, data) {
+    s3.putObject(params, (err, data) => {
         if (err) {
             console.log(err);
         } else {
             console.log('Created obj:\n', data);
+        }
+    });
+}
+
+if (cmds.indexOf('obj') !== -1) {
+    let params = {
+        Body: 'random data',
+        Bucket: bucketName,
+        Key: `hello${Date.now()}`
+    };
+    s3.putObject(params, (err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Created obj:\n', data);
+        }
+    });
+}
+
+if (cmds.indexOf('listobj') !== -1) {
+    s3.listObjects({ Bucket: bucketName }, (err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(`Got objects from ${bucketName}:`);
+            console.log(data);
         }
     });
 }
