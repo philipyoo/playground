@@ -54,9 +54,9 @@ if (cmds.indexOf('check') !== -1) {
 
     s3.getBucketVersioning({ Bucket: bucketName }, (err, data) => {
     	if (err) {
-    		console.log(err);
+            console.log(err);
     	} else {
-    		console.log('Versioning: ', data);
+            console.log('Versioning:\n', data);
     	}
     });
 }
@@ -66,7 +66,21 @@ if (cmds.indexOf('rep') !== -1) {
     	if (err) {
     		console.log(err);
     	} else {
-    		console.log('Replication:', data);
+    		console.log('Replication:\n', data);
     	}
+    });
+}
+
+if (cmds.indexOf('obj') !== -1) {
+    let params = {
+        Body: 'random data',
+        Bucket: bucketName,
+    };
+    s3.putObject(params, function(err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Created obj:\n', data);
+        }
     });
 }
