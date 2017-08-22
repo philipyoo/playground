@@ -75,6 +75,7 @@ if (cmds.indexOf('obj') !== -1) {
     let params = {
         Body: 'random data',
         Bucket: bucketName,
+        Key: `hello${Date.now()}`
     };
     s3.putObject(params, function(err, data) {
         if (err) {
