@@ -43,7 +43,7 @@ if (cmds.indexOf('list') !== -1) {
 }
 
 if (cmds.indexOf('check') !== -1) {
-    s3.headBucket({ Bucket: changeables.bucketName }, (err, data) => {
+    s3.headBucket({ Bucket: bucketName }, (err, data) => {
         if (err) {
             console.log(err);
             exit(1);
@@ -52,7 +52,7 @@ if (cmds.indexOf('check') !== -1) {
         }
     });
 
-    s3.getBucketVersioning({ Bucket: changeables.bucketName }, (err, data) => {
+    s3.getBucketVersioning({ Bucket: bucketName }, (err, data) => {
     	if (err) {
     		console.log(err);
     	} else {
@@ -62,7 +62,7 @@ if (cmds.indexOf('check') !== -1) {
 }
 
 if (cmds.indexOf('rep') !== -1) {
-    s3.getBucketReplication({ Bucket: changeables.bucketName }, (err, data) => {
+    s3.getBucketReplication({ Bucket: bucketName }, (err, data) => {
     	if (err) {
     		console.log(err);
     	} else {
