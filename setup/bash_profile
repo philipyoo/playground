@@ -2,3 +2,8 @@
 
 # put personal aliases here
 alias e="emacs -nw"
+
+# TODO: sometimes `git branch` does not show which branch I am on
+# This is a temp alias to check current branch
+# This error only shows up infrequently. Figure out root of problem
+alias gbranch="git rev-parse --abbrev-ref HEAD"
